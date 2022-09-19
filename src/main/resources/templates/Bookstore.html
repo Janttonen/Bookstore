@@ -5,6 +5,24 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-	<h1>This page works</h1>
+</table>
+
+	<table class="table table-stripped">
+		<tr>
+			<th>ISBN</th>
+			<th>Title</th>
+			<th>Author</th>
+			<th>Year</th>
+			<th>Price</th>
+		</tr>
+		<tr th:each="book : ${books}">
+			<td th:text="${book.isbn}"></td>
+			<td th:text="${book.title}"></td>
+			<td th:text ="${book.author}"></td>
+			<td th:text="${book.year}"></td>
+			<td th:text="${book.price}"></td>
+		</tr>
+	</table>
+
 </body>
 </html>

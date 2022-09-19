@@ -1,30 +1,54 @@
 package com.example.bookstore.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+
 public class Book {
-	
-	private String title;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+
+	private Long id;
+
 	private String author;
-	private int year;
 	private String isbn;
 	private double price;
+	private String title;
 	
+	@Column(name="publishing_year")
+	private int year;
 	
-	public Book(String title, String author, int year, String isbn, double price) {
+	public Book() {
+	}
+
+	public Book(String author, String isbn, double price, String title, int year) {
 		super();
+		this.isbn = isbn;
 		this.title = title;
 		this.author = author;
 		this.year = year;
-		this.isbn = isbn;
 		this.price = price;
 	}
-	
-	public Book() {
-		super();
-		this.title = null;
-		this.author = null;
-		this.year = 0;
-		this.isbn = null;
-		this.price = 0;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	public String getTitle() {
@@ -51,14 +75,6 @@ public class Book {
 		this.year = year;
 	}
 
-	public String getIsbn() {
-		return isbn;
-	}
-
-	public void setIsbn(String isbn) {
-		this.isbn = isbn;
-	}
-
 	public double getPrice() {
 		return price;
 	}
@@ -69,8 +85,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [title=" + title + ", author=" + author + ", year=" + year + ", isbn=" + isbn + ", price=" + price
-				+ "]";
+		return "Book [id=" + id + ", isbn=" + isbn + ", title=" + title + ", author=" + author + ", year=" + year
+				+ ", price=" + price + "]";
 	}
-
 }
