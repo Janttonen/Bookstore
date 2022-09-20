@@ -26,7 +26,8 @@ public class BookstoreApplication {
 			log.info("save a couple of books");
 			repository.save(new Book("Ernest Hemingway", "1232323-21", 12.99, "A Farewell to Arms",1929));
 			repository.save(new Book("George Orwell", "2212343-5",  9.99, "Animal Farm",1945));	
-			
+			repository.save(new Book("J. R. R Tolkien", "1324674-32", 15.99, "The Hobbit", 1937));
+			repository.save(new Book("George R. R. Martin", "4325690-1", 19.99, "A Game of Thrones", 1996));
 			log.info("fetch all books");
 			for (Book book : repository.findAll()) {
 				log.info(book.toString());
