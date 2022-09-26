@@ -54,15 +54,16 @@ public class BookController {
 	 @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
 	    public String getBook(@PathVariable("id") Long bookId, Model model) {
 	    	model.addAttribute("book", repository.findById(bookId));
+	    	model.addAttribute("categories", crepository.findAll());
 	        return "editbook";
 	    } 
 	 
 	 //nytten vain tallentaa muokatun kirjan uutena kirjana,en tajua miten sen saisi heitettyä vanhan päälle
 	 //PUT metodilla??
-	 @RequestMapping(value = "/edit", method = RequestMethod.GET)
+	 @RequestMapping(value = "../save", method = RequestMethod.GET)
 	    public String saveChanges(Book book) {
 		 repository.save(book);
-	        return "redirect:bookstore";
+	        return "redirect:/bookstore";
 	    } 
 	
 }
