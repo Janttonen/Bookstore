@@ -19,8 +19,8 @@ public class BookController {
 	@Autowired
 	private BookRepository repository;
 	
-	@Autowired
-	private CategoryRepository crepository;
+	//@Autowired
+	//private CategoryRepository crepository;
 
 	// localhost:8080/bookstore
 	// localhost:8080/h2-console
@@ -34,7 +34,7 @@ public class BookController {
 	@RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
-    	model.addAttribute("categories", crepository.findAll());
+    	//model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }  
 	
