@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
+import com.example.bookstore.domain.CategoryRepository;
 
 
 
@@ -17,6 +18,9 @@ public class BookController {
 
 	@Autowired
 	private BookRepository repository;
+	
+	@Autowired
+	private CategoryRepository crepository;
 
 	// localhost:8080/bookstore
 	// localhost:8080/h2-console
@@ -30,6 +34,7 @@ public class BookController {
 	@RequestMapping(value = "/add")
     public String addBook(Model model){
     	model.addAttribute("book", new Book());
+    	model.addAttribute("categories", crepository.findAll());
         return "addbook";
     }  
 	
@@ -44,4 +49,20 @@ public class BookController {
 	    	repository.deleteById(bookId);
 	        return "redirect:../bookstore";
 	    }    
+	 
+	 //heittää kirjan tiedot muokkaussivulle
+	 @RequestMapping(value = "/edit/{id}", method = RequestMethod.GET)
+	    public String getBook(@PathVariable("id") Long bookId, Model model) {
+	    	model.addAttribute("book", repository.findById(bookId));
+	        return "editbook";
+	    } 
+	 
+	 //nytten vain tallentaa muokatun kirjan uutena kirjana,en tajua miten sen saisi heitettyä vanhan päälle
+	 //PUT metodilla??
+	 @RequestMapping(value = "/edit", method = RequestMethod.GET)
+	    public String saveChanges(Book book) {
+		 repository.save(book);
+	        return "redirect:bookstore";
+	    } 
+	
 }
