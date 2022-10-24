@@ -23,7 +23,7 @@ public class BookstoreApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookstoreApplication.class, args);
 	}
-
+/*
 	@Bean
 	public CommandLineRunner studentDemo(BookRepository brepository, CategoryRepository crepository,
 			UserRepository urepo) {
@@ -60,5 +60,5 @@ public class BookstoreApplication {
 			urepo.save(user2);
 
 		};
-	}
+	} */
 }
