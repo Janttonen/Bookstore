@@ -59,6 +59,6 @@ public class BookstoreApplication {
 			urepo.save(user1);
 			urepo.save(user2);
 
-		};
-	} */
+		}; 
+	}*/
 }
